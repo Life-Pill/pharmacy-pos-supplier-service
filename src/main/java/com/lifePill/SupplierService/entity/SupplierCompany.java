@@ -6,7 +6,6 @@ import org.hibernate.annotations.GenericGenerator;
 
 import java.util.Set;
 
-
 @Entity
 @Getter
 @Setter
@@ -21,19 +20,19 @@ public class SupplierCompany extends BasedEntity{
     @GeneratedValue(strategy = GenerationType.AUTO,generator= "native")
     @GenericGenerator(name = "native",strategy = "native")
     @Column(name = "supplier_company_id")
-    private long SupllierCompanyId;
+    private long supplierCompanyId;
     @Column(name = "supplier_company_name")
-    private String SupplierCompanyName;
+    private String supplierCompanyName;
     @Column(name = "supplier_company_email")
-    private String SupplierCompanyEmail;
+    private String supplierCompanyEmail;
     @Column(name = "supplier_company_phone")
-    private String SupplierCompanyPhone;
+    private String supplierCompanyPhone;
     @Column(name = "supplier_company_address")
-    private String SupplierCompanyAddress;
+    private String supplierCompanyAddress;
     @Column(name = "supplier_company_description")
-    private String SupplierCompanyDescription;
+    private String supplierCompanyDescription;
 
-    @OneToMany(mappedBy="supplierCompany")
-    private Set<Suppliers> suppliers;
+//    @OneToMany(mappedBy="supplierCompany")
+//    private Set<Suppliers> suppliers;
 
 }
