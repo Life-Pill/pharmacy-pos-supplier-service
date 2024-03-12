@@ -8,4 +8,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 @EnableJpaRepositories
 public interface SupplierRepository extends JpaRepository<Suppliers,Long> {
+    boolean existsBySupplierEmail(String supplierEmail);
+
+    Suppliers findBySupplierId(Long supplierId);
 }
