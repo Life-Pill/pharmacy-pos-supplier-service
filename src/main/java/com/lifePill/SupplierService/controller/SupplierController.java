@@ -1,13 +1,9 @@
 package com.lifePill.SupplierService.controller;
 
-import com.lifePill.SupplierService.dto.SupplierCompanyDTO;
 import com.lifePill.SupplierService.dto.SupplierDTO;
-import com.lifePill.SupplierService.service.SupplierCompanyService;
 import com.lifePill.SupplierService.service.SupplierService;
 import com.lifePill.SupplierService.util.StandardResponse;
 import org.springframework.beans.factory.annotation.Autowired;
-
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,47 +13,48 @@ import java.util.List;
 @RestController
 @RequestMapping("lifepill/v1/supplier")
 public class SupplierController {
-
     @Autowired
-    private SupplierCompanyService supplierCompanyService;
+    private SupplierService supplierService;
 
     @PostMapping("/saved")
-    public ResponseEntity<StandardResponse> saveSupplierCompany(@RequestBody SupplierCompanyDTO supplierCompanyDTO){
-        SupplierCompanyDTO saveSupplierCompany = supplierCompanyService.saveSupplierCompany(supplierCompanyDTO);
+    public ResponseEntity<StandardResponse> saveSupplier(@RequestBody SupplierDTO supplierDTO){
+        SupplierDTO saveSupplierDTO = supplierService.saveSupplier(supplierDTO);
         return new ResponseEntity<StandardResponse>(
-                new StandardResponse(201,  "Supplier Saved Successfully",saveSupplierCompany),
+                new StandardResponse(201,  "Supplier Saved Successfully",saveSupplierDTO),
                 HttpStatus.CREATED);
     }
-    @GetMapping("get-supplier-Company-By-Id/{supplierCompanyId}")
-    public ResponseEntity<StandardResponse> getSupplierCompanyById(@PathVariable(value ="supplierCompanyId") Long supplierCompanyId){
-        SupplierCompanyDTO supplierCompanyDTO = supplierCompanyService.getSupplierByCode(supplierCompanyId);
+    @GetMapping("get-supplier-By-Id/{supplierId}")
+    public ResponseEntity<StandardResponse> getSupplierById(@PathVariable(value ="supplierId") Long supplierId){
+        SupplierDTO supplierDTO = supplierService.getSupplierByCode(supplierId);
 
         return new ResponseEntity<StandardResponse>(
-                new StandardResponse(201,supplierCompanyId + " Supplier company get Successfully",supplierCompanyDTO),
+                new StandardResponse(201,supplierId + " Supplier get Successfully",supplierDTO),
                 HttpStatus.CREATED);
     }
 
-    @GetMapping(path="/get-all-supplierCompany")
-    public ResponseEntity<StandardResponse> getAllSupplierCompany(){
-        List<SupplierCompanyDTO> allSupplierCompany = supplierCompanyService.getAllSupplierCompany();
+    @GetMapping(path="/get-all-supplier")
+    public ResponseEntity<StandardResponse> getAllSupplier(){
+        List<SupplierDTO> allSupplier = supplierService.getAllSupplier();
         return new ResponseEntity<StandardResponse>(
-                new StandardResponse(201,"SUCCESS", allSupplierCompany),
+                new StandardResponse(201,"SUCCESS", allSupplier),
                 HttpStatus.OK
         );
     }
 
-    @DeleteMapping(path = "/delete-supplierCompany/{id}")
-    public ResponseEntity<StandardResponse> deleteSupplierCompany(@PathVariable(value = "id") long supplierCompanyId){
-        String deleted = supplierCompanyService.deleteSupplierCompany(supplierCompanyId);
+    @DeleteMapping(path = "/delete-supplier/{id}")
+    public ResponseEntity<StandardResponse> deleteSupplier(@PathVariable(value = "id") long supplierId){
+        String deleted = supplierService.deleteSupplier(supplierId);
         return new ResponseEntity<StandardResponse>(
                 new StandardResponse(201,"DELETED", deleted),
                 HttpStatus.OK
         );
     }
     @PutMapping("/update")
-    public String updateSupplierCompany(@RequestBody SupplierCompanyDTO supplierCompanyDTO){
-        String message = supplierCompanyService.updateSupplierCompany(supplierCompanyDTO);
-        return message;
+    public ResponseEntity<StandardResponse> updateSupplier(@RequestBody SupplierDTO supplierDTO){
+        String message = supplierService.updateSupplier(supplierDTO);
+        return new ResponseEntity<StandardResponse>(
+                new StandardResponse(201,"UPDATED", message),
+                HttpStatus.OK
+        );
     }
-
 }
