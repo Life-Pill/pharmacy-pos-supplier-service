@@ -11,7 +11,6 @@ import org.hibernate.annotations.GenericGenerator;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "supplier")
-@Builder
 public class Suppliers extends BasedEntity{
     @Id
     @Column(name = "supplier_id")
@@ -27,7 +26,8 @@ public class Suppliers extends BasedEntity{
     @Column(name = "supplier_description")
     private String supplierDescription;
 
-    @ManyToOne
-    @JoinColumn(name="supplier_company_id", nullable=false)
-    private SupplierCompany supplierCompany;
+//    @ManyToOne
+//    @JoinColumn(name="supplier_company_id", nullable=false)
+//    private SupplierCompany supplierCompany;
+
 }
