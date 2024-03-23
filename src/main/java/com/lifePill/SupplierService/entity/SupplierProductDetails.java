@@ -44,7 +44,12 @@ public class SupplierProductDetails {
     private MeasuringUnitType measuringUnitType;
 
 
+// TODO
+    //connect supplier id and product details
 //- supplier: String
+
+    // TODO
+    // connect supplier product item to real product item
 
 
 

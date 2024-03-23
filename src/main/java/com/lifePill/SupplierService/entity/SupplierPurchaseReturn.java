@@ -26,6 +26,11 @@ public class SupplierPurchaseReturn {
     @Column(name = "return_quantity")
     private String returnQuantity;
 
+    @ManyToOne
+    @JoinColumn(name="supplier_id", nullable=false)
+    private Suppliers suppliers;
+
+    //TODO
    // productId
   //- supplierId : Int
 }
