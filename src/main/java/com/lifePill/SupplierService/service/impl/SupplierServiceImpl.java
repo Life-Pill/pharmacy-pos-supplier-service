@@ -1,22 +1,33 @@
 package com.lifePill.SupplierService.service.impl;
 
 import com.lifePill.SupplierService.dto.SupplierDTO;
+import com.lifePill.SupplierService.dto.request.RequestSupplierSaveDTO;
+import com.lifePill.SupplierService.entity.SupplierCompany;
+import com.lifePill.SupplierService.entity.SupplierPurchaseReturn;
 import com.lifePill.SupplierService.entity.Suppliers;
 import com.lifePill.SupplierService.exception.EntityDuplicationException;
 import com.lifePill.SupplierService.exception.NotFoundException;
+import com.lifePill.SupplierService.repository.SupplierCompanyRepository;
 import com.lifePill.SupplierService.repository.SupplierRepository;
 import com.lifePill.SupplierService.service.SupplierService;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @Service
+@Transactional
 @AllArgsConstructor
 public class SupplierServiceImpl implements SupplierService {
 
     private SupplierRepository supplierRepository;
+
+    @Autowired
+    private SupplierCompanyRepository supplierCompanyRepository;
 
     @Override
     public SupplierDTO saveSupplier(SupplierDTO supplierDTO) {
@@ -39,6 +50,8 @@ public class SupplierServiceImpl implements SupplierService {
                     saveSupplier.getSupplierPhone(),
                     saveSupplier.getSupplierEmail(),
                     saveSupplier.getSupplierDescription()
+
+
             );
             return savedSupplierDTO;
         }
@@ -70,6 +83,7 @@ public class SupplierServiceImpl implements SupplierService {
                         supplier.getSupplierPhone(),
                         supplier.getSupplierEmail(),
                         supplier.getSupplierDescription()
+
                 );
                 supplierDTOList.add(supplierDTO);
             }
@@ -108,4 +122,28 @@ public class SupplierServiceImpl implements SupplierService {
             throw new NotFoundException("No data found for that id");
         }
     }
+
+
+    @Override
+    @Transactional
+    public String addSupplier(RequestSupplierSaveDTO requestSupplierSaveDTO) {
+        // Check if the SupplierCompany exists, if not, create a new one
+        SupplierCompany supplierCompany = supplierCompanyRepository
+                .findById(requestSupplierSaveDTO.getSupplierCompanyID())
+                .orElseThrow(() -> new NotFoundException("Supplier Company not found"));
+
+        // Create a new Supplier
+        Suppliers supplier = new Suppliers();
+        supplier.setSupplierCompany(supplierCompany);
+        supplier.setSupplierName(requestSupplierSaveDTO.getSupplierName());
+        supplier.setSupplierPhone(requestSupplierSaveDTO.getSupplierPhone());
+        supplier.setSupplierEmail(requestSupplierSaveDTO.getSupplierEmail());
+        supplier.setSupplierDescription(requestSupplierSaveDTO.getSupplierDescription());
+
+        // Save the Supplier
+        supplierRepository.save(supplier);
+
+        return "Supplier Saved Successfully";
+    }
+
 }

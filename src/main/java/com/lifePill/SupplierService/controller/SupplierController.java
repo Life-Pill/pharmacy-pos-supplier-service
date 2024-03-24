@@ -1,6 +1,7 @@
 package com.lifePill.SupplierService.controller;
 
 import com.lifePill.SupplierService.dto.SupplierDTO;
+import com.lifePill.SupplierService.dto.request.RequestSupplierSaveDTO;
 import com.lifePill.SupplierService.service.SupplierService;
 import com.lifePill.SupplierService.util.StandardResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,13 +17,21 @@ public class SupplierController {
     @Autowired
     private SupplierService supplierService;
 
-    @PostMapping("/saved")
-    public ResponseEntity<StandardResponse> saveSupplier(@RequestBody SupplierDTO supplierDTO){
-        SupplierDTO saveSupplierDTO = supplierService.saveSupplier(supplierDTO);
-        return new ResponseEntity<StandardResponse>(
-                new StandardResponse(201,  "Supplier Saved Successfully",saveSupplierDTO),
-                HttpStatus.CREATED);
-    }
+//    @PostMapping("/saved")
+//    public ResponseEntity<StandardResponse> saveSupplier(@RequestBody SupplierDTO supplierDTO){
+//        SupplierDTO saveSupplierDTO = supplierService.saveSupplier(supplierDTO);
+//        return new ResponseEntity<StandardResponse>(
+//                new StandardResponse(201,  "Supplier Saved Successfully",saveSupplierDTO),
+//                HttpStatus.CREATED);
+//    }
+@PostMapping("/saved")
+public ResponseEntity<StandardResponse> saveSupplier(@RequestBody RequestSupplierSaveDTO requestSupplierSaveDTO){
+
+    String id = supplierService.addSupplier(requestSupplierSaveDTO);
+    return new ResponseEntity<StandardResponse>(
+            new StandardResponse(201,  "Supplier Saved Successfully",2),
+            HttpStatus.CREATED);
+}
     @GetMapping("get-supplier-By-Id/{supplierId}")
     public ResponseEntity<StandardResponse> getSupplierById(@PathVariable(value ="supplierId") Long supplierId){
         SupplierDTO supplierDTO = supplierService.getSupplierByCode(supplierId);

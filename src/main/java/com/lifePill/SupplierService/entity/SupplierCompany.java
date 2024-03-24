@@ -32,7 +32,18 @@ public class SupplierCompany extends BasedEntity{
     @Column(name = "supplier_company_description")
     private String supplierCompanyDescription;
 
-//    @OneToMany(mappedBy="supplierCompany")
-//    private Set<Suppliers> suppliers;
+    @OneToMany(mappedBy="supplierCompany")
+    private Set<Suppliers> suppliers;
 
+    //TODO
+
+
+    public SupplierCompany(long supplierCompanyId, String supplierCompanyName, String supplierCompanyEmail, String supplierCompanyPhone, String supplierCompanyAddress, String supplierCompanyDescription) {
+        this.supplierCompanyId = supplierCompanyId;
+        this.supplierCompanyName = supplierCompanyName;
+        this.supplierCompanyEmail = supplierCompanyEmail;
+        this.supplierCompanyPhone = supplierCompanyPhone;
+        this.supplierCompanyAddress = supplierCompanyAddress;
+        this.supplierCompanyDescription = supplierCompanyDescription;
+    }
 }
