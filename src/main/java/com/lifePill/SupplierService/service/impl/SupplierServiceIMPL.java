@@ -1,6 +1,8 @@
 package com.lifePill.SupplierService.service.impl;
 
 
+import com.lifePill.SupplierService.dto.SupplierAndSupplierCompanyDTO;
+import com.lifePill.SupplierService.dto.SupplierCompanyDTO;
 import com.lifePill.SupplierService.dto.SupplierDTO;
 import com.lifePill.SupplierService.entity.Supplier;
 import com.lifePill.SupplierService.entity.SupplierCompany;
@@ -8,6 +10,7 @@ import com.lifePill.SupplierService.exception.EntityDuplicationException;
 import com.lifePill.SupplierService.exception.NotFoundException;
 import com.lifePill.SupplierService.repository.SupplierCompanyRepository;
 import com.lifePill.SupplierService.repository.SupplierRepository;
+import com.lifePill.SupplierService.service.SupplierCompanyService;
 import com.lifePill.SupplierService.service.SupplierService;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
@@ -30,6 +33,7 @@ public class SupplierServiceIMPL implements SupplierService {
     private SupplierRepository supplierRepository;
     private SupplierCompanyRepository supplierCompanyRepository;
     private ModelMapper modelMapper;
+    private SupplierCompanyService supplierCompanyService;
 
     /**
      * Retrieves all suppliers.
@@ -137,5 +141,29 @@ public class SupplierServiceIMPL implements SupplierService {
         Supplier supplier = supplierRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException("Supplier not found with id: " + id));
         return modelMapper.map(supplier, SupplierDTO.class);
+    }
+
+    @Override
+    public SupplierAndSupplierCompanyDTO getSupplierAndCompanyBySupplierId(long supplierId) {
+        Supplier supplier = supplierRepository.findById(supplierId)
+                .orElseThrow(() -> new NotFoundException("Supplier not found with id: " + supplierId));
+
+        //model mappers
+        SupplierDTO supplierDTO = modelMapper.map(supplier, SupplierDTO.class);
+
+        long SupplierCompanyId = supplier.getSupplierCompany().getCompanyId();
+        System.out.println(SupplierCompanyId);
+        SupplierCompany supplierCompany = supplierCompanyRepository.findById(SupplierCompanyId)
+                .orElseThrow(() -> new NotFoundException("Supplier Company not found"));
+        System.out.println(supplierDTO);
+
+        SupplierCompanyDTO supplierCompanyDTO = modelMapper.map(supplierCompany,SupplierCompanyDTO.class);
+
+        SupplierAndSupplierCompanyDTO supplierAndSupplierCompanyDTO = new SupplierAndSupplierCompanyDTO();
+
+        supplierAndSupplierCompanyDTO.setSupplierDTO(supplierDTO);
+        supplierAndSupplierCompanyDTO.setSupplierCompanyDTO(supplierCompanyDTO);
+
+        return supplierAndSupplierCompanyDTO;
     }
 }

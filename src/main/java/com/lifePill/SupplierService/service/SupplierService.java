@@ -1,5 +1,6 @@
 package com.lifePill.SupplierService.service;
 
+import com.lifePill.SupplierService.dto.SupplierAndSupplierCompanyDTO;
 import com.lifePill.SupplierService.dto.SupplierDTO;
 
 import java.util.List;
@@ -14,4 +15,6 @@ public interface SupplierService {
     void deleteSupplierById(long id);
 
     SupplierDTO getSupplierById(long id);
+
+    SupplierAndSupplierCompanyDTO getSupplierAndCompanyBySupplierId(long supplierId);
 }

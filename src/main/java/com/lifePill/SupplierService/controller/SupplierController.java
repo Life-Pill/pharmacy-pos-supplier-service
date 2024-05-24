@@ -1,6 +1,9 @@
 package com.lifePill.SupplierService.controller;
 
+import com.lifePill.SupplierService.dto.SupplierAndSupplierCompanyDTO;
+import com.lifePill.SupplierService.dto.SupplierCompanyDTO;
 import com.lifePill.SupplierService.dto.SupplierDTO;
+import com.lifePill.SupplierService.service.SupplierCompanyService;
 import com.lifePill.SupplierService.service.SupplierService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -67,6 +70,20 @@ public class SupplierController {
     public ResponseEntity<SupplierDTO> getSupplierById(@PathVariable("id") long id) {
         SupplierDTO supplierDTO = supplierService.getSupplierById(id);
         return new ResponseEntity<>(supplierDTO, HttpStatus.OK);
+    }
+
+    /**
+     * Retrieves a supplier and supplier company by their SupplierID.
+     *
+     * @param supplierId The ID of the supplier to retrieve.
+     * @return ResponseEntity containing the retrieved SupplierDTO with HTTP status OK if found, or NOT_FOUND if not found.
+     */
+    @GetMapping(path ="get-supplier-with-company/{supplierId}")
+    public ResponseEntity<SupplierAndSupplierCompanyDTO> getSupplierAndCompanyDetailsBySupplierId(@PathVariable("supplierId") long supplierId) {
+        SupplierAndSupplierCompanyDTO supplierAndSupplierCompanyDTO = supplierService.getSupplierAndCompanyBySupplierId(supplierId);
+
+
+        return new ResponseEntity<>(supplierAndSupplierCompanyDTO, HttpStatus.OK);
     }
 
     /**
