@@ -1,15 +1,15 @@
 package com.lifePill.SupplierService.service.impl;
 
-import com.lifepill.possystem.dto.SupplierCompanyDTO;
-import com.lifepill.possystem.entity.SupplierCompany;
-import com.lifepill.possystem.exception.NotFoundException;
-import com.lifepill.possystem.repo.supplierRepository.SupplierCompanyRepository;
-import com.lifepill.possystem.service.SupplierCompanyService;
+import com.lifePill.SupplierService.dto.SupplierCompanyDTO;
+import com.lifePill.SupplierService.entity.SupplierCompany;
+import com.lifePill.SupplierService.exception.NotFoundException;
+import com.lifePill.SupplierService.repository.SupplierCompanyRepository;
+import com.lifePill.SupplierService.service.SupplierCompanyService;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;

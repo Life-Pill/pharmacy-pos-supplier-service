@@ -1,6 +1,7 @@
 package com.lifePill.SupplierService.service;
 
-import com.lifepill.possystem.dto.SupplierCompanyDTO;
+
+import com.lifePill.SupplierService.dto.SupplierCompanyDTO;
 
 import java.util.List;
 

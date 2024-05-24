@@ -1,7 +1,5 @@
 package com.lifePill.SupplierService.config;
 
-import com.lifepill.possystem.dto.requestDTO.ItemSaveRequestCategoryDTO;
-import com.lifepill.possystem.entity.ItemCategory;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.context.annotation.Bean;

@@ -16,6 +16,7 @@ import lombok.*;
 @Builder
 @Table(name = "supplier")
 public class Supplier extends BaseEntity {
+
     @Id
     @Column(name = "supplier_id", length = 45)
     @GeneratedValue(strategy = GenerationType.AUTO)
