@@ -1,22 +1,23 @@
 package com.lifePill.SupplierService.service.impl;
 
 
-import com.lifepill.possystem.dto.SupplierDTO;
-import com.lifepill.possystem.entity.Supplier;
-import com.lifepill.possystem.entity.SupplierCompany;
-import com.lifepill.possystem.exception.EntityDuplicationException;
-import com.lifepill.possystem.exception.NotFoundException;
-import com.lifepill.possystem.repo.supplierRepository.SupplierCompanyRepository;
-import com.lifepill.possystem.repo.supplierRepository.SupplierRepository;
-import com.lifepill.possystem.service.SupplierService;
+import com.lifePill.SupplierService.dto.SupplierDTO;
+import com.lifePill.SupplierService.entity.Supplier;
+import com.lifePill.SupplierService.entity.SupplierCompany;
+import com.lifePill.SupplierService.exception.EntityDuplicationException;
+import com.lifePill.SupplierService.exception.NotFoundException;
+import com.lifePill.SupplierService.repository.SupplierCompanyRepository;
+import com.lifePill.SupplierService.repository.SupplierRepository;
+import com.lifePill.SupplierService.service.SupplierService;
+import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
-import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+
 
 /**
  * Implementation of the SupplierService interface providing operations related to suppliers.

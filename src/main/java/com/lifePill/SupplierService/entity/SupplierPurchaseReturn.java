@@ -2,6 +2,7 @@ package com.lifePill.SupplierService.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.apache.commons.lang3.function.Suppliers;
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity

@@ -1,6 +1,7 @@
 package com.lifePill.SupplierService.controller;
 
 import com.lifePill.SupplierService.dto.SupplierDTO;
+import com.lifePill.SupplierService.service.SupplierService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

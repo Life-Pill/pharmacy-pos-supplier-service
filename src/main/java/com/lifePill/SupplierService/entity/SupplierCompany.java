@@ -15,7 +15,7 @@ import java.util.Set;
 @ToString
 @Entity
 @Table(name = "supplierCompany")
-public class SupplierCompany extends BasedEntity{
+public class SupplierCompany extends BaseEntity{
 
     @Id
     @Column(name = "company_id", length = 45)

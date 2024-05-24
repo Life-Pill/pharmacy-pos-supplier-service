@@ -1,9 +1,8 @@
 package com.lifePill.SupplierService.entity;
 
+import jakarta.persistence.*;
 import lombok.*;
 
-import javax.persistence.*;
-import java.util.Set;
 
 /**
  * The type Supplier.

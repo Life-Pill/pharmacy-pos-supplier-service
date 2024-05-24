@@ -1,7 +1,7 @@
 package com.lifePill.SupplierService.advisor;
 
-import com.lifepill.possystem.exception.NotFoundException;
-import com.lifepill.possystem.util.StandardResponse;
+import com.lifePill.SupplierService.exception.NotFoundException;
+import com.lifePill.SupplierService.util.StandardResponse;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
