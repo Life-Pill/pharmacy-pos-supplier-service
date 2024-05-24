@@ -1,3 +1,4 @@
+/*
 package com.lifePill.SupplierService.entity;
 
 import jakarta.persistence.*;
@@ -35,3 +36,4 @@ public class SupplierPurchaseReturn {
    // productId
   //- supplierId : Int
 }
+*/

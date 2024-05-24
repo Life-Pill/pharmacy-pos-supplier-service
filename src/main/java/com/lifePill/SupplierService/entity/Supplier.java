@@ -40,14 +40,13 @@ public class Supplier extends BaseEntity {
     @Column(name = "supplier_image")
     private String supplierImage;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "supplier")
-    private Set<Item> items;
-
     @Column(name = "supplier_rating")
-    private String supplierRating;
+    private long supplierRating;
 
     @ManyToOne
     @JoinColumn(name = "company_id", nullable = true)
     private SupplierCompany supplierCompany;
 
+   /*@OneToMany(cascade = CascadeType.ALL, mappedBy = "supplier")
+    private Set<Item> items;*/
 }

@@ -25,8 +25,8 @@ public class SupplierCompanyDTO {
     private String companyEmail;
     private String companyDescription;
     private String companyImage;
-    private String companyStatus;
-    private String companyRating;
+    private boolean companyStatus;
+    private long companyRating;
     private String companyBank;
     private String companyAccountNumber;
 }

@@ -69,7 +69,7 @@ public class SupplierCompanyServiceIMPL implements SupplierCompanyService {
             existingCompany.setCompanyContact(updatedCompanyDTO.getCompanyContact());
             existingCompany.setCompanyEmail(updatedCompanyDTO.getCompanyEmail());
             existingCompany.setCompanyDescription(updatedCompanyDTO.getCompanyDescription());
-            existingCompany.setCompanyStatus(updatedCompanyDTO.getCompanyStatus());
+            existingCompany.setCompanyStatus(updatedCompanyDTO.isCompanyStatus());
             existingCompany.setCompanyRating(updatedCompanyDTO.getCompanyRating());
             existingCompany.setCompanyBank(updatedCompanyDTO.getCompanyBank());
             existingCompany.setCompanyAccountNumber(updatedCompanyDTO.getCompanyAccountNumber());

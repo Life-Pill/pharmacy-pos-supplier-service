@@ -2,6 +2,7 @@ package com.lifePill.SupplierService.controller;
 
 import com.lifePill.SupplierService.dto.SupplierCompanyDTO;
 import com.lifePill.SupplierService.service.SupplierCompanyService;
+import com.lifePill.SupplierService.util.StandardResponse;
 import lombok.AllArgsConstructor;
 
 import org.springframework.http.HttpStatus;
@@ -70,7 +71,7 @@ public class SupplierCompanyController {
      * @return ResponseEntity with HTTP status indicating the success of the deletion.
      */
     @DeleteMapping(path = "/delete-supplier-company/{id}")
-    public ResponseEntity<Void> deleteSupplierCompanyById(@PathVariable("id") long id) {
+    public ResponseEntity<StandardResponse> deleteSupplierCompanyById(@PathVariable("id") long id) {
         supplierCompanyService.deleteSupplierCompanyById(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }

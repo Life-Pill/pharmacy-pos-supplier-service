@@ -1,3 +1,4 @@
+/*
 package com.lifePill.SupplierService.entity;
 
 import jakarta.persistence.*;
@@ -33,3 +34,4 @@ public class SupplierCredit {
     private boolean paymentCompletedStatus;
 
 }
+*/
