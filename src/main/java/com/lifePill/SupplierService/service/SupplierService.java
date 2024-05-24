@@ -1,22 +1,17 @@
 package com.lifePill.SupplierService.service;
 
-import com.lifePill.SupplierService.dto.SupplierCompanyDTO;
-import com.lifePill.SupplierService.dto.SupplierDTO;
-import com.lifePill.SupplierService.dto.request.RequestSupplierSaveDTO;
+import com.lifepill.possystem.dto.SupplierDTO;
 
 import java.util.List;
 
 public interface SupplierService {
+    List<SupplierDTO> getAllSuppliers();
 
     SupplierDTO saveSupplier(SupplierDTO supplierDTO);
 
-    SupplierDTO getSupplierByCode(Long supplierId);
+    SupplierDTO updateSupplierById(long id, SupplierDTO updatedSupplierDTO);
 
-    List<SupplierDTO> getAllSupplier();
+    void deleteSupplierById(long id);
 
-    String deleteSupplier(long supplierId);
-
-    String updateSupplier(SupplierDTO supplierDTO);
-
-    String addSupplier(RequestSupplierSaveDTO requestSupplierSaveDTO);
+    SupplierDTO getSupplierById(long id);
 }
