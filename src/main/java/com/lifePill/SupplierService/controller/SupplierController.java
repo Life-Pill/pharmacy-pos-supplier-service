@@ -79,10 +79,11 @@ public class SupplierController {
      * @return ResponseEntity containing the retrieved SupplierDTO with HTTP status OK if found, or NOT_FOUND if not found.
      */
     @GetMapping(path ="get-supplier-with-company/{supplierId}")
-    public ResponseEntity<SupplierAndSupplierCompanyDTO> getSupplierAndCompanyDetailsBySupplierId(@PathVariable("supplierId") long supplierId) {
-        SupplierAndSupplierCompanyDTO supplierAndSupplierCompanyDTO = supplierService.getSupplierAndCompanyBySupplierId(supplierId);
-
-
+    public ResponseEntity<SupplierAndSupplierCompanyDTO> getSupplierAndCompanyDetailsBySupplierId(
+            @PathVariable("supplierId") long supplierId
+    ) {
+        SupplierAndSupplierCompanyDTO supplierAndSupplierCompanyDTO = supplierService
+                .getSupplierAndCompanyBySupplierId(supplierId);
         return new ResponseEntity<>(supplierAndSupplierCompanyDTO, HttpStatus.OK);
     }
 
