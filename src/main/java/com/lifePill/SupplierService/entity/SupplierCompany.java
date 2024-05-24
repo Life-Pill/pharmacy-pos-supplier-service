@@ -2,48 +2,44 @@ package com.lifePill.SupplierService.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
-import org.hibernate.annotations.GenericGenerator;
 
 import java.util.Set;
 
-@Entity
+/**
+ * The type Supplier company.
+ */
+@NoArgsConstructor
+@AllArgsConstructor
 @Getter
 @Setter
 @ToString
-@AllArgsConstructor
-@NoArgsConstructor
-@Builder
-@Table(name = "supplier_company")
+@Entity
+@Table(name = "supplierCompany")
 public class SupplierCompany extends BasedEntity{
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO,generator= "native")
-    @GenericGenerator(name = "native",strategy = "native")
-    @Column(name = "supplier_company_id")
-    private long supplierCompanyId;
-    @Column(name = "supplier_company_name")
-    private String supplierCompanyName;
-    @Column(name = "supplier_company_email")
-    private String supplierCompanyEmail;
-    @Column(name = "supplier_company_phone")
-    private String supplierCompanyPhone;
-    @Column(name = "supplier_company_address")
-    private String supplierCompanyAddress;
-    @Column(name = "supplier_company_description")
-    private String supplierCompanyDescription;
+    @Column(name = "company_id", length = 45)
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long CompanyId;
+    @Column(name = "company_name", length = 100)
+    private String CompanyName;
+    @Column(name = "company_address", length = 100)
+    private String CompanyAddress;
+    @Column(name = "company_contact", length = 12)
+    private String CompanyContact;
+    @Column(name = "company_email", length = 50)
+    private String CompanyEmail;
+    @Column(name = "company_description")
+    private String CompanyDescription;
+    @Column(name = "company_image")
+    private String CompanyStatus;
+    @Column(name = "company_status")
+    private String CompanyRating;
+    @Column(name = "company_bank")
+    private String CompanyBank;
+    @Column(name = "company_account_number")
+    private String CompanyAccountNumber;
 
-    @OneToMany(mappedBy="supplierCompany")
-    private Set<Suppliers> suppliers;
-
-    //TODO
-
-
-    public SupplierCompany(long supplierCompanyId, String supplierCompanyName, String supplierCompanyEmail, String supplierCompanyPhone, String supplierCompanyAddress, String supplierCompanyDescription) {
-        this.supplierCompanyId = supplierCompanyId;
-        this.supplierCompanyName = supplierCompanyName;
-        this.supplierCompanyEmail = supplierCompanyEmail;
-        this.supplierCompanyPhone = supplierCompanyPhone;
-        this.supplierCompanyAddress = supplierCompanyAddress;
-        this.supplierCompanyDescription = supplierCompanyDescription;
-    }
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "supplierCompany")
+    private Set<Supplier> suppliers;
 }

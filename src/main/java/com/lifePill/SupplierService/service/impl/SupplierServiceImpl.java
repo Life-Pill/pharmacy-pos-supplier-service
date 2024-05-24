@@ -3,8 +3,6 @@ package com.lifePill.SupplierService.service.impl;
 import com.lifePill.SupplierService.dto.SupplierDTO;
 import com.lifePill.SupplierService.dto.request.RequestSupplierSaveDTO;
 import com.lifePill.SupplierService.entity.SupplierCompany;
-import com.lifePill.SupplierService.entity.SupplierPurchaseReturn;
-import com.lifePill.SupplierService.entity.Suppliers;
 import com.lifePill.SupplierService.exception.EntityDuplicationException;
 import com.lifePill.SupplierService.exception.NotFoundException;
 import com.lifePill.SupplierService.repository.SupplierCompanyRepository;
@@ -17,7 +15,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 @Service
 @Transactional
