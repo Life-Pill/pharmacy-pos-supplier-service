@@ -44,8 +44,10 @@ public class SupplierServiceIMPL implements SupplierService {
             List<SupplierDTO> supplierDTOList = new ArrayList<>();
             for (Supplier supplier: getAllSuppliers){
                 SupplierDTO supplierDTO = modelMapper.map(supplier, SupplierDTO.class);
+                supplierDTO.setCompanyId(supplier.getSupplierCompany().getCompanyId());
                 supplierDTOList.add(supplierDTO);
             }
+
             return supplierDTOList;
         }else {
             throw new NotFoundException("No Supplier Found");
@@ -73,7 +75,6 @@ public class SupplierServiceIMPL implements SupplierService {
 
             // Set the Branch entity to the Supplier entity
             supplier.setSupplierCompany(supplierCompany);
-
             // Save the Supplier entity
             supplierRepository.save(supplier);
 

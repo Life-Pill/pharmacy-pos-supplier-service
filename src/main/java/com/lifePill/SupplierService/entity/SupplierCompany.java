@@ -32,8 +32,10 @@ public class SupplierCompany extends BaseEntity{
     @Column(name = "company_description")
     private String CompanyDescription;
     @Column(name = "company_image")
-    private boolean CompanyStatus;
+    private String companyImage;
     @Column(name = "company_status")
+    private boolean CompanyStatus;
+    @Column(name = "company_rating")
     private long CompanyRating;
     @Column(name = "company_bank")
     private String CompanyBank;

@@ -32,5 +32,4 @@ public class SupplierDTO {
     private String supplierDescription;
     private String supplierImage;
     private long supplierRating;
-
 }
