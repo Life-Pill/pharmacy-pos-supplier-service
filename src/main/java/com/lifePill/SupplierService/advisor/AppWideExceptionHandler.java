@@ -29,7 +29,7 @@ public class AppWideExceptionHandler {
     @ExceptionHandler(DataIntegrityViolationException.class)
     public ResponseEntity<String> handleDataIntegrityViolationException(DataIntegrityViolationException ex) {
         // Log the exception for debugging purposes
-        ex.printStackTrace();
+       // ex.printStackTrace();
 
         // Provide a meaningful error message to the client
         String errorMessage = "An error occurred while processing your request. Please try again later.";
