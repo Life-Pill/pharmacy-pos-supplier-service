@@ -1,11 +1,10 @@
 spring:
   application:
-    name: supplier-service
+    name: SUPPLIER-SERVICE
   datasource:
     driver-class-name: org.postgresql.Driver
     url: jdbc:postgresql://localhost:5432/supplier-service
     username: postgres
-    password: Prami@3990
 
   jpa:
     hibernate:
@@ -15,10 +14,6 @@ spring:
         dialect: org.hibernate.dialect.PostgreSQLDialect
     show-sql: true
 
-  security:
-    user:
-      name: lifepill
-      password: 12345
 
   mvc:
     pathmatch:
@@ -27,6 +22,8 @@ spring:
 server:
   port: 8082
 
-
-
-
+eureka:
+  instance:
+    client:
+      serviceUrl:
+        defaultZone: http://localhost:8761/eureka/

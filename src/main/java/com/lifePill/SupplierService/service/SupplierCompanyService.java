@@ -1,19 +1,18 @@
 package com.lifePill.SupplierService.service;
 
+
 import com.lifePill.SupplierService.dto.SupplierCompanyDTO;
 
 import java.util.List;
 
 public interface SupplierCompanyService {
-//    public String saveSupplierCompany(SupplierCompanyDTO supplierCompanyDTO);
+    List<SupplierCompanyDTO> getAllSupplierCompanies();
 
     SupplierCompanyDTO saveSupplierCompany(SupplierCompanyDTO supplierCompanyDTO);
 
-    SupplierCompanyDTO getSupplierByCode(Long supplierCompanyId);
+    SupplierCompanyDTO updateSupplierCompanyById(long id, SupplierCompanyDTO updatedCompanyDTO);
 
-    List<SupplierCompanyDTO> getAllSupplierCompany();
+    void deleteSupplierCompanyById(long id);
 
-    String deleteSupplierCompany(long supplierCompanyId);
-
-    String updateSupplierCompany(SupplierCompanyDTO supplierCompanyDTO);
+    SupplierCompanyDTO getSupplierCompanyById(long id);
 }

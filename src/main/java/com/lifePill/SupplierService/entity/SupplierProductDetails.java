@@ -1,3 +1,4 @@
+/*
 package com.lifePill.SupplierService.entity;
 
 import com.lifePill.SupplierService.entity.enums.MeasuringUnitType;
@@ -55,3 +56,4 @@ public class SupplierProductDetails {
 
 
 }
+*/

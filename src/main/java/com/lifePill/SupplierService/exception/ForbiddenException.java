@@ -4,16 +4,16 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 /**
- * The type Not found exception.
+ * The type Forbidden exception.
  */
-@ResponseStatus(value = HttpStatus.NOT_FOUND)
-public class NotFoundException extends RuntimeException{
+@ResponseStatus(value = HttpStatus.FORBIDDEN)
+public class ForbiddenException extends RuntimeException {
     /**
-     * Instantiates a new Not found exception.
+     * Instantiates a new Forbidden exception.
      *
      * @param message the message
      */
-    public NotFoundException(String message){
+    public ForbiddenException(String message) {
         super(message);
     }
 }

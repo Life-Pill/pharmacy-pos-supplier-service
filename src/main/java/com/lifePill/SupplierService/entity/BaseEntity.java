@@ -14,12 +14,15 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDateTime;
 
+/**
+ * The type Base entity.
+ */
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)
 @Getter
 @Setter
 @ToString
-public class BasedEntity {
+public class BaseEntity {
 
     @CreatedDate
     @Column(updatable = false)
@@ -36,4 +39,5 @@ public class BasedEntity {
     @LastModifiedBy
     @Column(insertable = false)
     private String updatedBy;
+
 }
