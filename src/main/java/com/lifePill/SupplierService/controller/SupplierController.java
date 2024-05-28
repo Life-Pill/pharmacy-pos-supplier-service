@@ -93,10 +93,15 @@ public class SupplierController {
      * @param id The ID of the supplier to delete.
      * @return ResponseEntity with HTTP status NO_CONTENT if the deletion is successful, or BAD_REQUEST if the deletion fails.
      */
-
     @DeleteMapping(path = "/delete-supplier/{id}")
     public ResponseEntity<Void> deleteSupplierById(@PathVariable("id") long id) {
         supplierService.deleteSupplierById(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
+    @GetMapping(path = "/check-supplier-exists-by-id/{supplierId}")
+    public ResponseEntity<Boolean> checkSupplierExistsById(@RequestParam(value = "supplierId") long supplierId) {
+        boolean exists = supplierService.checkSupplierExistsById(supplierId);
+        return new ResponseEntity<>(exists, HttpStatus.OK);
     }
 }
