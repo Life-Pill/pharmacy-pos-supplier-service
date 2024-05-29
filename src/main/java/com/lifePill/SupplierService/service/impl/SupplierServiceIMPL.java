@@ -143,6 +143,13 @@ public class SupplierServiceIMPL implements SupplierService {
         return modelMapper.map(supplier, SupplierDTO.class);
     }
 
+    /**
+     * Retrieves a Supplier and its associated SupplierCompany by the Supplier's ID.
+     *
+     * @param supplierId The ID of the Supplier to retrieve.
+     * @return A SupplierAndSupplierCompanyDTO object containing the Supplier and its associated SupplierCompany.
+     * @throws NotFoundException If no Supplier is found with the given ID or if no SupplierCompany is found with the ID retrieved from the Supplier.
+     */
     @Override
     public SupplierAndSupplierCompanyDTO getSupplierAndCompanyBySupplierId(long supplierId) {
         Supplier supplier = supplierRepository.findById(supplierId)
@@ -165,5 +172,16 @@ public class SupplierServiceIMPL implements SupplierService {
         supplierAndSupplierCompanyDTO.setSupplierCompanyDTO(supplierCompanyDTO);
 
         return supplierAndSupplierCompanyDTO;
+    }
+
+    /**
+     * Checks if a Supplier exists by its ID.
+     *
+     * @param supplierId The ID of the Supplier to check.
+     * @return A boolean indicating whether a Supplier with the given ID exists.
+     */
+    @Override
+    public boolean checkSupplierExistsById(long supplierId) {
+        return supplierRepository.existsById(supplierId);
     }
 }

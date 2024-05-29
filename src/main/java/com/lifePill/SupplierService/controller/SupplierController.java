@@ -1,10 +1,9 @@
 package com.lifePill.SupplierService.controller;
 
 import com.lifePill.SupplierService.dto.SupplierAndSupplierCompanyDTO;
-import com.lifePill.SupplierService.dto.SupplierCompanyDTO;
 import com.lifePill.SupplierService.dto.SupplierDTO;
-import com.lifePill.SupplierService.service.SupplierCompanyService;
 import com.lifePill.SupplierService.service.SupplierService;
+import com.lifePill.SupplierService.util.StandardResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -93,10 +92,30 @@ public class SupplierController {
      * @param id The ID of the supplier to delete.
      * @return ResponseEntity with HTTP status NO_CONTENT if the deletion is successful, or BAD_REQUEST if the deletion fails.
      */
-
     @DeleteMapping(path = "/delete-supplier/{id}")
     public ResponseEntity<Void> deleteSupplierById(@PathVariable("id") long id) {
         supplierService.deleteSupplierById(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
+    /**
+     * Checks if a supplier exists by their ID.
+     *
+     * @param supplierId The ID of the supplier to check.
+     * @return ResponseEntity containing a StandardResponse with HTTP status OK.
+     */
+    @GetMapping(path = "/check-supplier-exists-by-id/{supplierId}")
+    public ResponseEntity<StandardResponse> checkSupplierExistsById(
+            @RequestParam(value = "supplierId") long supplierId
+         ) {
+        boolean exists = supplierService.checkSupplierExistsById(supplierId);
+        return new ResponseEntity<>(
+                new StandardResponse(
+                        200,
+                        exists? "Supplier exists" : "Supplier does not exist",
+                        exists
+                ),
+                HttpStatus.OK
+        );
     }
 }

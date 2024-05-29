@@ -17,4 +17,6 @@ public interface SupplierService {
     SupplierDTO getSupplierById(long id);
 
     SupplierAndSupplierCompanyDTO getSupplierAndCompanyBySupplierId(long supplierId);
+
+    boolean checkSupplierExistsById(long supplierId);
 }
