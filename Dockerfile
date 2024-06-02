@@ -1,17 +1,14 @@
-# Start with a base image containing Java runtime
+# Use a base image with Java 17
 FROM openjdk:17-jdk-slim
 
-# Add a volume pointing to /tmp
-VOLUME /tmp
+# Set the working directory inside the container
+WORKDIR /app
 
-# Make port 8082 available to the world outside this container
+# Copy the Maven build artifact (jar file) to the working directory
+COPY target/pos-supplier-service-0.0.1-SNAPSHOT.jar pharmacy-pos-supplier-service.jar
+
+# Expose the port the application runs on
 EXPOSE 8082
 
-# The application's jar file
-ARG JAR_FILE=target/pos-supplier-service-0.0.1-SNAPSHOT.jar
-
-# Add the application's jar to the container
-ADD ${JAR_FILE} supplier-service.jar
-
 # Run the jar file
-ENTRYPOINT ["java", "-jar", "/supplier-service.jar"]
+ENTRYPOINT ["java", "-jar", "pharmacy-pos-supplier-service.jar"]
